@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku solver</title>
+</head>
+<body>
+
+<h1>Welcome on my sudoku solver</h1>
+
+<p>This solver take an image of a sudoku grid, extract the grid and solve it.</p>
+<div style="border-left: 2px solid red; font-size: 20px;">
+    <div style="display: inline-block; color: red; font-size: 30px; margin-top: 2px;">&#9888;</div> The solver may fail because extracting the grid is not quite great yet.
+</div>
+
+<form action="/sudoku_solver" method="post" enctype=multipart/form-data>
+    <input  name = "file" type="file"/>
+    <input  type="submit" value="submit"/>
+</form>
+
+<img src="/static/Wait.svg"/>
+{% if file %}
+    <p>Hello {{ file }} !</p>
+    <img src="{{url_for('static', filename=filepath)}}"/>
+{% endif %}
+
+</body>
+</html>
